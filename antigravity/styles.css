@@ -30,6 +30,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,8 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 a {
@@ -2799,4 +2802,442 @@ body.lume-mode .modal-photo-caption {
   box-shadow: 0 0 0 2px #f3e5ab, 0 2px 8px rgba(0, 0, 0, 0.6);
   cursor: grab;
   transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+/* ==========================================================================
+   OTTIMIZZAZIONE MOBILE PROPORZIONATA E PERFETTA (SMARTPHONE & TABLET)
+   ========================================================================== */
+
+.product-visual--photo {
+  height: 295px;
+}
+
+.product-real-photo {
+  object-position: center 48%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+  }
+
+  .section-pad {
+    padding: 50px 0;
+  }
+
+  /* Announcement Bar Mobile */
+  .announcement-bar {
+    font-size: 0.72rem;
+    padding: 7px 0;
+  }
+
+  .announcement-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .announcement-links {
+    display: none;
+  }
+
+  /* Header Mobile proporzionato senza mai sbordare */
+  .header-inner {
+    height: 66px;
+    gap: 8px;
+  }
+
+  .brand-logo-img {
+    width: 96px;
+    height: 44px;
+    border-radius: 5px;
+  }
+
+  .main-nav {
+    top: 66px;
+    padding: 16px 20px;
+    gap: 14px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .lume-switch-pill {
+    padding: 4px 8px;
+    gap: 5px;
+  }
+
+  .lume-switch-label {
+    display: none;
+  }
+
+  .lume-switch-track {
+    width: 28px;
+    height: 16px;
+  }
+
+  .lume-switch-thumb {
+    width: 12px;
+    height: 12px;
+  }
+
+  .lume-switch-pill.active .lume-switch-thumb {
+    transform: translateX(12px);
+  }
+
+  .icon-btn,
+  .insta-header-btn,
+  .whatsapp-pill {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .whatsapp-pill span {
+    display: none;
+  }
+
+  .cart-btn {
+    height: 35px;
+    padding: 0 9px;
+    gap: 4px;
+  }
+
+  /* Hero Mobile */
+  .hero {
+    padding: 26px 0 38px;
+  }
+
+  .hero-grid {
+    gap: 26px;
+  }
+
+  .eyebrow-badge {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 12px;
+    padding: 7px 11px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .hero-lead,
+  .hero h1.hero-lead {
+    font-size: 0.96rem;
+    line-height: 1.58;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .hero-trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  .trust-divider {
+    display: none;
+  }
+
+  .trust-stat {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--border-light);
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
+  body.lume-mode .trust-stat {
+    background: #0f141d;
+    border-color: #1e2738;
+  }
+
+  .trust-stat strong {
+    font-size: 0.84rem;
+  }
+
+  .trust-stat span {
+    font-size: 0.75rem;
+  }
+
+  /* Card Orologio in Arrivo (Hero) su Mobile */
+  .mystery-minimal-card {
+    max-width: 100%;
+    padding: 16px !important;
+    border-radius: 16px !important;
+    gap: 12px;
+  }
+
+  .mystery-watch-visual-wrap {
+    height: 205px;
+  }
+
+  .mystery-blurred-photos,
+  .mystery-watch-img-main {
+    width: 175px;
+    height: 195px;
+  }
+
+  .mystery-minimal-prices {
+    padding: 10px 14px;
+  }
+
+  .mystery-price-new {
+    font-size: 1.35rem;
+  }
+
+  /* Brand Strip & Filtri scorrevoli orizzontalmente stile App */
+  .brand-strip {
+    padding: 14px 0;
+  }
+
+  .brand-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .brand-logos,
+  .filter-tabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .brand-logos::-webkit-scrollbar,
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .brand-pill,
+  .filter-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* Intestazioni Sezioni & Controlli Catalogo */
+  .section-header {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-sub {
+    font-size: 0.88rem;
+  }
+
+  .catalog-controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .sort-wrap,
+  .sort-select {
+    width: 100%;
+  }
+
+  /* Collezioni & Prodotti su Mobile */
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .collection-card {
+    min-height: 185px;
+    padding: 22px 20px;
+  }
+
+  .collection-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-visual {
+    height: 235px;
+  }
+
+  .product-visual--photo {
+    height: 285px;
+  }
+
+  .product-body {
+    padding: 16px;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+  }
+
+  .product-price {
+    font-size: 1.12rem;
+  }
+
+  /* Chi Siamo, Marketplace, Instagram & Contatti su Mobile */
+  .about-grid,
+  .contact-grid {
+    gap: 28px;
+  }
+
+  .store-badge-box {
+    padding: 24px 20px;
+  }
+
+  .store-badge-box h3 {
+    font-size: 1.75rem;
+  }
+
+  .store-meta {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .marketplace-store-card {
+    padding: 22px 20px;
+  }
+
+  .marketplace-store-card h3 {
+    font-size: 1.55rem;
+  }
+
+  .insta-banner-card {
+    padding: 24px 20px;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .insta-banner-left {
+    align-items: center;
+    gap: 14px;
+  }
+
+  .insta-big-icon-link {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+  }
+
+  .insta-banner-right,
+  .btn-insta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-form-box {
+    padding: 22px 18px;
+  }
+
+  .site-footer {
+    padding: 46px 0 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  /* Scheda Prodotto (Modal) perfezionata per Mobile */
+  .modal-backdrop {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .modal-dialog {
+    padding: 18px 15px 22px;
+    max-height: 92vh;
+    border-radius: 18px 18px 12px 12px;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .modal-product-grid {
+    gap: 18px;
+  }
+
+  .modal-watch-column {
+    gap: 10px;
+  }
+
+  .modal-watch-preview,
+  .modal-watch-preview--gallery {
+    height: 255px;
+    padding: 12px;
+  }
+
+  .modal-gallery-thumbs {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+  }
+
+  .wrist-slider-box {
+    padding: 10px 12px;
+  }
+
+  .wrist-slider-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .modal-lume-bar {
+    padding: 10px 12px;
+  }
+
+  .modal-lume-bar .lume-switch-label {
+    display: none;
+  }
+
+  #modalTitle {
+    font-size: 1.45rem !important;
+  }
+
+  .modal-spec-row {
+    font-size: 0.8rem;
+    gap: 10px;
+  }
+
+  .modal-spec-row strong {
+    text-align: right;
+  }
 }

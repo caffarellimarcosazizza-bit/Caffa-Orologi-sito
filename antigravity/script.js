@@ -796,6 +796,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('mainNav').classList.toggle('open');
   });
 
+  document.querySelectorAll('#mainNav .nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      document.getElementById('mainNav').classList.remove('open');
+    });
+  });
+
   // Delegated input per lo Slider della Misura del Polso (15 cm - 20 cm, 60fps via transform: scale)
   document.body.addEventListener('input', (e) => {
     if (e.target && e.target.id === 'modalWristSlider') {
