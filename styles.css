@@ -143,10 +143,11 @@ button, input, select, textarea {
 }
 
 .brand-logo-img {
-  height: 72px;
-  width: 155px;
-  object-fit: cover;
+  height: 70px;
+  width: 148px;
+  object-fit: contain;
   object-position: center;
+  background: #0b0b0b;
   display: block;
   border-radius: 6px;
   transition: transform 0.2s ease;
@@ -1565,9 +1566,10 @@ button, input, select, textarea {
 
 .footer-logo-img {
   height: 84px;
-  width: 180px;
-  object-fit: cover;
+  width: 170px;
+  object-fit: contain;
   object-position: center;
+  background: #0b0b0b;
   border-radius: 8px;
   display: block;
 }

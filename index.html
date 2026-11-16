@@ -28,9 +28,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/jpeg" href="caffa_orologi_instagram_profile.jpg" />
-  <link rel="apple-touch-icon" href="caffa_orologi_instagram_profile.jpg" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="icon" type="image/jpeg" href="antigravity/caffa_orologi_instagram_profile.jpg" />
+  <link rel="apple-touch-icon" href="antigravity/caffa_orologi_instagram_profile.jpg" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 
   <!-- Schema.org JSON-LD Structured Data (Store + Product Catalog + FAQPage) -->
   <script type="application/ld+json">
@@ -255,7 +255,12 @@
       </button>
 
       <a href="#top" class="brand-logo" aria-label="Caffa Orologi Home">
-        <img src="caffa_orologi_instagram_profile.jpg" alt="Caffa Orologi" class="brand-logo-img" />
+        <img
+          src="caffa_orologi_instagram_profile.jpg"
+          onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='antigravity/caffa_orologi_instagram_profile.jpg';}"
+          alt="Caffa Orologi"
+          class="brand-logo-img"
+        />
       </a>
 
       <nav class="main-nav" id="mainNav">
@@ -380,7 +385,7 @@
                 </svg>
                 <img
                   src="https://www.omegawatches.com/media/catalog/product/o/m/omega-speedmaster-38-co-axial-chronometer-chronograph-38-mm-32430385001001-a1dd16.png"
-                  onerror="this.onerror=null; this.src='images/mystery-drop-watch.png';"
+                  onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='antigravity/images/mystery-drop-watch.png';}else if(this.dataset.fb==1){this.dataset.fb=2;this.src='images/mystery-drop-watch.png';}"
                   alt="Orologio in arrivo"
                   class="mystery-watch-img-main"
                   draggable="false"
@@ -842,7 +847,12 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#top" class="footer-logo-wrap">
-          <img src="caffa_orologi_instagram_profile.jpg" alt="Caffa Orologi" class="footer-logo-img" />
+          <img
+            src="caffa_orologi_instagram_profile.jpg"
+            onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='antigravity/caffa_orologi_instagram_profile.jpg';}"
+            alt="Caffa Orologi"
+            class="footer-logo-img"
+          />
         </a>
         <p class="footer-desc">
           Rivenditore specializzato in orologi iconici, collezioni speciali <em>Omega × Swatch Bioceramic MoonSwatch</em>, <em>Seiko</em>, <em>Tissot</em> e ricerca su commissione di qualsiasi marchio. Spedizioni assicurate in Italia e in tutto il mondo.
@@ -933,6 +943,6 @@
     </div>
   </aside>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

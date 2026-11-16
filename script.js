@@ -253,6 +253,25 @@ let activeSearchQuery = '';
 let activeSort = 'featured';
 let cart = [];
 let isLumeMode = false;
+let useAntigravityPrefix = false;
+
+function resolveImgSrc(src) {
+  if (!src) return '';
+  if (useAntigravityPrefix && !src.startsWith('http') && !src.startsWith('antigravity/')) {
+    return 'antigravity/' + src;
+  }
+  return src;
+}
+
+window.handleImgFallback = function (imgEl) {
+  if (!imgEl || imgEl.dataset.fb) return;
+  imgEl.dataset.fb = '1';
+  useAntigravityPrefix = true;
+  const raw = imgEl.getAttribute('data-raw-src') || imgEl.getAttribute('src') || '';
+  if (raw && !raw.startsWith('antigravity/')) {
+    imgEl.src = 'antigravity/' + raw;
+  }
+};
 
 function toggleLumeMode() {
   isLumeMode = !isLumeMode;
@@ -409,7 +428,7 @@ function renderCatalog() {
           ${
             hasPhotos
               ? `
-            <img src="${p.images[0].src}" alt="${p.title}" class="product-real-photo" loading="lazy" />
+            <img src="${resolveImgSrc(p.images[0].src)}" data-raw-src="${p.images[0].src}" onerror="window.handleImgFallback(this)" alt="${p.title}" class="product-real-photo" loading="lazy" />
             <div class="product-lume-overlay" aria-hidden="true">
               ${renderWatchSVG(p, 165)}
             </div>
@@ -524,7 +543,11 @@ function setModalPhotoIndex(index) {
   const mainImg = document.getElementById('modalMainPhoto');
   const captionEl = document.getElementById('modalPhotoCaption');
   const counterEl = document.getElementById('modalPhotoCounter');
-  if (mainImg) mainImg.src = item.src;
+  if (mainImg) {
+    delete mainImg.dataset.fb;
+    mainImg.setAttribute('data-raw-src', item.src);
+    mainImg.src = resolveImgSrc(item.src);
+  }
   if (captionEl) captionEl.textContent = item.caption || '';
   if (counterEl) counterEl.textContent = `${activeModalPhotoIndex + 1} / ${total}`;
 
@@ -555,7 +578,7 @@ function openProductModal(productId) {
             ? `
           <div class="modal-watch-preview modal-watch-preview--gallery" id="modalWatchPreviewStage">
             <button type="button" class="modal-gallery-nav prev" data-gallery-nav="-1" aria-label="Foto precedente">‹</button>
-            <img id="modalMainPhoto" src="${product.images[0].src}" alt="${product.title}" class="modal-gallery-main-img" />
+            <img id="modalMainPhoto" src="${resolveImgSrc(product.images[0].src)}" data-raw-src="${product.images[0].src}" onerror="window.handleImgFallback(this)" alt="${product.title}" class="modal-gallery-main-img" />
             <!-- Livello Prova al Polso (Orologio fisso in primo piano + Sagoma polso in background) -->
             <div class="modal-wrist-fit-layer" aria-hidden="true">
               ${renderWristSilhouetteSVG()}
@@ -575,7 +598,7 @@ function openProductModal(productId) {
               .map(
                 (img, idx) => `
               <button type="button" class="modal-thumb-btn ${idx === 0 ? 'active' : ''}" data-gallery-index="${idx}" title="${img.caption || `Foto ${idx + 1}`}">
-                <img src="${img.src}" alt="${img.caption || `Foto ${idx + 1}`}" loading="lazy" />
+                <img src="${resolveImgSrc(img.src)}" data-raw-src="${img.src}" onerror="window.handleImgFallback(this)" alt="${img.caption || `Foto ${idx + 1}`}" loading="lazy" />
               </button>
             `
               )
