@@ -419,9 +419,6 @@ function renderCatalog() {
             hasPhotos
               ? `
             <img src="${resolveImgSrc(p.images[0].src)}" data-raw-src="${p.images[0].src}" onerror="window.handleImgFallback(this)" alt="${p.title}" class="product-real-photo" loading="lazy" />
-            <div class="product-lume-overlay" aria-hidden="true">
-              ${renderWatchSVG(p, 165)}
-            </div>
             <span class="product-photo-count">📷 ${p.images.length} foto</span>
           `
               : renderWatchSVG(p, 165)
@@ -575,9 +572,6 @@ function openProductModal(productId) {
               <div class="wrist-foreground-watch">
                 ${renderWatchSVG(product, 210)}
               </div>
-            </div>
-            <div class="modal-lume-overlay" aria-hidden="true">
-              ${renderWatchSVG(product, 235)}
             </div>
             <button type="button" class="modal-gallery-nav next" data-gallery-nav="1" aria-label="Foto successiva">›</button>
             <span class="modal-photo-counter" id="modalPhotoCounter">1 / ${product.images.length}</span>
@@ -829,14 +823,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', (e) => {
     const thumbBtn = e.target.closest('[data-gallery-index]');
     if (thumbBtn) {
-      if (isLumeMode) toggleLumeMode();
       setModalPhotoIndex(Number(thumbBtn.dataset.galleryIndex));
       return;
     }
 
     const navBtn = e.target.closest('[data-gallery-nav]');
     if (navBtn) {
-      if (isLumeMode) toggleLumeMode();
       setModalPhotoIndex(activeModalPhotoIndex + Number(navBtn.dataset.galleryNav));
       return;
     }
