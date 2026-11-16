@@ -511,6 +511,18 @@ function updateModalWristScale(cmValue) {
   }
 }
 
+window.fitModalMainImg = function (imgEl) {
+  if (!imgEl || !imgEl.naturalWidth || !imgEl.naturalHeight) return;
+  const isLandscape = imgEl.naturalWidth > imgEl.naturalHeight;
+  imgEl.classList.toggle('is-landscape', isLandscape);
+};
+
+function closeProductModal() {
+  const modal = document.getElementById('productModal');
+  if (modal) modal.hidden = true;
+  document.body.style.overflow = '';
+}
+
 function setModalPhotoIndex(index) {
   const product = PRODUCTS.find((p) => p.id === activeModalProductId);
   if (!product || !Array.isArray(product.images) || product.images.length === 0) return;
@@ -528,6 +540,7 @@ function setModalPhotoIndex(index) {
     delete mainImg.dataset.fb;
     mainImg.setAttribute('data-raw-src', item.src);
     mainImg.src = resolveImgSrc(item.src);
+    if (mainImg.complete) window.fitModalMainImg(mainImg);
   }
   if (captionEl) captionEl.textContent = item.caption || '';
   if (counterEl) counterEl.textContent = `${activeModalPhotoIndex + 1} / ${total}`;
@@ -559,7 +572,7 @@ function openProductModal(productId) {
             ? `
           <div class="modal-watch-preview modal-watch-preview--gallery" id="modalWatchPreviewStage">
             <button type="button" class="modal-gallery-nav prev" data-gallery-nav="-1" aria-label="Foto precedente">‹</button>
-            <img id="modalMainPhoto" src="${resolveImgSrc(product.images[0].src)}" data-raw-src="${product.images[0].src}" onerror="window.handleImgFallback(this)" alt="${product.title}" class="modal-gallery-main-img" />
+            <img id="modalMainPhoto" src="${resolveImgSrc(product.images[0].src)}" data-raw-src="${product.images[0].src}" onload="window.fitModalMainImg(this)" onerror="window.handleImgFallback(this)" alt="${product.title}" class="modal-gallery-main-img" />
             <!-- Livello Prova al Polso (Orologio fisso in primo piano + Sagoma polso in background) -->
             <div class="modal-wrist-fit-layer" aria-hidden="true">
               ${renderWristSilhouetteSVG()}
@@ -619,7 +632,7 @@ function openProductModal(productId) {
           </div>
         </div>
       </div>
-      <div>
+      <div class="modal-info-col">
         <span class="product-brand">${product.brand}</span>
         <h2 id="modalTitle" style="font-family: var(--font-serif); font-size: 1.9rem; line-height: 1.18; margin: 4px 0 8px;">${product.title}</h2>
         <p style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px;">${formatPrice(product.price)}</p>
@@ -645,8 +658,33 @@ function openProductModal(productId) {
   `;
 
   modal.hidden = false;
+  document.body.style.overflow = 'hidden';
   const dialog = modal.querySelector('.modal-dialog');
   if (dialog) dialog.scrollTop = 0;
+
+  if (hasPhotos) {
+    const stageEl = document.getElementById('modalWatchPreviewStage');
+    if (stageEl) {
+      let touchStartX = 0;
+      stageEl.addEventListener(
+        'touchstart',
+        (ev) => {
+          touchStartX = ev.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+      stageEl.addEventListener(
+        'touchend',
+        (ev) => {
+          const dx = ev.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 42) {
+            setModalPhotoIndex(activeModalPhotoIndex + (dx < 0 ? 1 : -1));
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
 }
 
 function updateCartUI() {
@@ -825,7 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addCartBtn = e.target.closest('[data-add-cart]');
     if (addCartBtn) {
       if (addCartBtn.dataset.closeAfter === 'true') {
-        document.getElementById('productModal').hidden = true;
+        closeProductModal();
       }
       addToCart(addCartBtn.dataset.addCart);
       return;
@@ -852,11 +890,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close Modals
-  document.getElementById('closeProductModal').addEventListener('click', () => {
-    document.getElementById('productModal').hidden = true;
-  });
+  document.getElementById('closeProductModal').addEventListener('click', closeProductModal);
+  const backBtn = document.getElementById('closeProductBackBtn');
+  if (backBtn) backBtn.addEventListener('click', closeProductModal);
   document.getElementById('productModal').addEventListener('click', (e) => {
-    if (e.target.id === 'productModal') e.target.hidden = true;
+    if (e.target.id === 'productModal') closeProductModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProductModal();
+      document.getElementById('policyModal').hidden = true;
+    }
   });
 
   document.getElementById('closePolicyModal').addEventListener('click', () => {

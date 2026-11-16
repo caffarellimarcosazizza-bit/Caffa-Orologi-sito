@@ -30,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="antigravity/caffa_orologi_instagram_profile.jpg" />
   <link rel="apple-touch-icon" href="antigravity/caffa_orologi_instagram_profile.jpg" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 
   <!-- Schema.org JSON-LD Structured Data (Store + Product Catalog + FAQPage) -->
   <script type="application/ld+json">
@@ -904,8 +904,14 @@
 
   <!-- Product Quick-View Modal -->
   <div class="modal-backdrop" id="productModal" hidden>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="closeProductModal" aria-label="Chiudi">×</button>
+    <div class="modal-dialog modal-dialog-product" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-topbar">
+        <button type="button" class="modal-back-btn" id="closeProductBackBtn">
+          <span aria-hidden="true">←</span>
+          <span>Torna al catalogo</span>
+        </button>
+        <button type="button" class="modal-close-corner" id="closeProductModal" aria-label="Chiudi scheda prodotto">×</button>
+      </div>
       <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
@@ -937,6 +943,6 @@
     </div>
   </aside>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
