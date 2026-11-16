@@ -409,12 +409,6 @@ function renderCatalog() {
       <article class="product-card" data-product-id="${p.id}">
         <div class="product-visual ${hasPhotos ? 'product-visual--photo' : ''}" data-open-product="${p.id}">
           <span class="product-badge ${p.badgeHot ? 'badge-hot' : ''}">${p.badge}</span>
-          <button type="button" class="card-lume-moon-btn ${isLumeMode ? 'active' : ''}" data-toggle-lume aria-pressed="${isLumeMode ? 'true' : 'false'}" title="Test Super-LumiNova (Giorno/Notte)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <span>Lume</span>
-          </button>
           ${
             hasPhotos
               ? `
@@ -624,25 +618,6 @@ function openProductModal(productId) {
             <span class="wrist-bound-label">20 cm</span>
           </div>
         </div>
-
-        <!-- Interruttore Giorno/Notte Super-LumiNova sulla pagina del prodotto -->
-        <div class="modal-lume-bar">
-          <div class="modal-lume-info">
-            <span class="modal-lume-title">Test Super-LumiNova®</span>
-            <span class="modal-lume-sub" id="modalLumeStatusText">
-              ${isLumeMode ? 'Notte • Super-LumiNova® Attivo' : 'Giorno • Clicca la luna per testare il Lume'}
-            </span>
-          </div>
-          <button type="button" class="lume-switch-pill modal-lume-switch ${isLumeMode ? 'active' : ''}" data-toggle-lume aria-pressed="${isLumeMode ? 'true' : 'false'}">
-            <span class="lume-moon-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </span>
-            <span class="lume-switch-label">Giorno / Notte</span>
-            <span class="lume-switch-track"><span class="lume-switch-thumb"></span></span>
-          </button>
-        </div>
       </div>
       <div>
         <span class="product-brand">${product.brand}</span>
@@ -670,6 +645,8 @@ function openProductModal(productId) {
   `;
 
   modal.hidden = false;
+  const dialog = modal.querySelector('.modal-dialog');
+  if (dialog) dialog.scrollTop = 0;
 }
 
 function updateCartUI() {
