@@ -389,16 +389,6 @@ function getFilteredProducts() {
 
 function renderCatalog() {
   const grid = document.getElementById('productsGrid');
-  const banner = document.getElementById('activeSearchBanner');
-  const termEl = document.getElementById('activeSearchTerm');
-
-  if (activeSearchQuery.trim()) {
-    banner.hidden = false;
-    termEl.textContent = activeSearchQuery;
-  } else {
-    banner.hidden = true;
-  }
-
   const items = getFilteredProducts();
   if (items.length === 0) {
     grid.innerHTML = `
@@ -808,11 +798,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('clearSearchBtn').addEventListener('click', () => {
-    activeSearchQuery = '';
-    searchInput.value = '';
-    renderCatalog();
-  });
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      activeSearchQuery = '';
+      searchInput.value = '';
+      renderCatalog();
+    });
+  }
 
   // Mobile Menu
   document.getElementById('mobileMenuBtn').addEventListener('click', () => {
