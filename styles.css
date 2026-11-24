@@ -2499,158 +2499,58 @@ body.lume-mode .modal-photo-caption {
 
 .mystery-watch-visual-wrap {
   position: relative;
-  height: 250px;
+  height: 315px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  background: radial-gradient(circle at 50% 50%, #1b1f2a 0%, #090b0f 80%);
+  background: #14171f;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.28);
 }
 
-.mystery-blurred-photos {
-  position: relative;
-  width: 210px;
-  height: 235px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  pointer-events: none;
-}
-
-.mystery-silhouette-underlay {
-  position: absolute;
-  width: 190px;
-  height: 230px;
-  filter: blur(22px) brightness(0.9) contrast(1.15);
-  opacity: 0.8;
-}
-
-.mystery-watch-img-main {
-  position: relative;
-  z-index: 2;
-  width: 210px;
-  height: 235px;
-  object-fit: contain;
-  filter: blur(22px) brightness(1.02) contrast(1.18);
-  transform: scale(1.05);
-  user-select: none;
-  pointer-events: none;
-}
-
-.mystery-minimal-veil {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(10, 12, 16, 0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.minimal-hourglass-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(12, 14, 20, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.minimal-hourglass-svg {
+.hero-offer-watch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
   display: block;
-  overflow: visible;
+  filter: none !important;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hg-rotor {
-  transform-box: view-box;
-  transform-origin: 32px 40px;
-  animation: hgFlipCycle 4.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+.mystery-minimal-card:hover .hero-offer-watch-img {
+  transform: scale(1.04);
 }
 
-.hg-sand-top {
-  transform-box: view-box;
-  transform-origin: 32px 39px;
-  will-change: transform, opacity;
-  animation: hgSandTopDrain 4.6s linear infinite;
+.hero-offer-watch-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 2px 2px 0;
 }
 
-.hg-sand-bottom {
-  transform-box: view-box;
-  transform-origin: 32px 65px;
-  will-change: transform, opacity;
-  animation: hgSandBottomFill 4.6s linear infinite;
+.hero-offer-brand {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold-light);
+  text-transform: uppercase;
 }
 
-.hg-sand-stream {
-  will-change: stroke-dashoffset, opacity;
-  animation: hgStreamFall 0.35s linear infinite, hgStreamVisibility 4.6s linear infinite;
+.hero-offer-title {
+  font-family: var(--font-serif);
+  font-size: 1.48rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
 }
 
-@keyframes hgSandTopDrain {
-  0% {
-    transform: scale(1);
-    opacity: 0.95;
-  }
-  82% {
-    transform: scale(0.05);
-    opacity: 0.95;
-  }
-  84%, 100% {
-    transform: scale(0);
-    opacity: 0;
-  }
-}
-
-@keyframes hgSandBottomFill {
-  0%, 3% {
-    transform: scale(0.05);
-    opacity: 0.95;
-  }
-  82%, 100% {
-    transform: scale(1);
-    opacity: 0.95;
-  }
-}
-
-@keyframes hgStreamFall {
-  0% {
-    stroke-dashoffset: 5;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes hgStreamVisibility {
-  0%, 2% {
-    opacity: 0;
-  }
-  5%, 81% {
-    opacity: 0.95;
-  }
-  84%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes hgFlipCycle {
-  0%, 84% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
+.hero-offer-ref {
+  font-size: 0.75rem;
+  color: #9aa3b5;
+  font-weight: 500;
 }
 
 .mystery-minimal-footer {
@@ -3088,7 +2988,7 @@ body.lume-mode .modal-photo-caption {
     font-size: 0.75rem;
   }
 
-  /* Card Orologio in Arrivo (Hero) su Mobile */
+  /* Card Offerta da non perdere (Hero) su Mobile */
   .mystery-minimal-card {
     max-width: 100%;
     padding: 16px !important;
@@ -3097,13 +2997,11 @@ body.lume-mode .modal-photo-caption {
   }
 
   .mystery-watch-visual-wrap {
-    height: 205px;
+    height: 310px;
   }
 
-  .mystery-blurred-photos,
-  .mystery-watch-img-main {
-    width: 175px;
-    height: 195px;
+  .hero-offer-title {
+    font-size: 1.35rem;
   }
 
   .mystery-minimal-prices {
