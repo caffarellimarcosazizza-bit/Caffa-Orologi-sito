@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.caffaorologi.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/caffa_orologi_instagram_profile.jpg</image:loc>
+      <image:title>Caffa Orologi – Lamezia Terme</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/snoopy-white/snoopy-white-1.jpg</image:loc>
+      <image:title>Omega x Swatch Bioceramic MoonSwatch Mission to the Moonphase Snoopy White</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/snoopy-black/snoopy-black-1.jpg</image:loc>
+      <image:title>Omega x Swatch Bioceramic MoonSwatch Mission to the Moonphase Snoopy Black</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/mission-to-the-moon/moon-2.jpg</image:loc>
+      <image:title>Omega x Swatch Bioceramic MoonSwatch Mission to the Moon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/seiko-alpinist/alpinist-1.jpg</image:loc>
+      <image:title>Seiko Prospex Alpinist SPB121J1 Quadrante Verde</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/tissot-prx/prx-1.jpg</image:loc>
+      <image:title>Tissot PRX Powermatic 80 Quadrante Nero Waffle T137.407.17.051.00</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.caffaorologi.com/images/seiko-sarb033/sarb-1.jpg</image:loc>
+      <image:title>Seiko Spirit SARB033 Automatic JDM Black Dial</image:title>
+    </image:image>
+  </url>
+</urlset>
