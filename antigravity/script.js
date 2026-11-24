@@ -253,6 +253,25 @@ let activeSearchQuery = '';
 let activeSort = 'featured';
 let cart = [];
 let isLumeMode = false;
+let useAntigravityPrefix = false;
+
+function resolveImgSrc(src) {
+  if (!src) return '';
+  if (useAntigravityPrefix && !src.startsWith('http') && !src.startsWith('antigravity/')) {
+    return 'antigravity/' + src;
+  }
+  return src;
+}
+
+window.handleImgFallback = function (imgEl) {
+  if (!imgEl || imgEl.dataset.fb) return;
+  imgEl.dataset.fb = '1';
+  useAntigravityPrefix = true;
+  const raw = imgEl.getAttribute('data-raw-src') || imgEl.getAttribute('src') || '';
+  if (raw && !raw.startsWith('antigravity/')) {
+    imgEl.src = 'antigravity/' + raw;
+  }
+};
 
 function toggleLumeMode() {
   isLumeMode = !isLumeMode;
@@ -370,16 +389,6 @@ function getFilteredProducts() {
 
 function renderCatalog() {
   const grid = document.getElementById('productsGrid');
-  const banner = document.getElementById('activeSearchBanner');
-  const termEl = document.getElementById('activeSearchTerm');
-
-  if (activeSearchQuery.trim()) {
-    banner.hidden = false;
-    termEl.textContent = activeSearchQuery;
-  } else {
-    banner.hidden = true;
-  }
-
   const items = getFilteredProducts();
   if (items.length === 0) {
     grid.innerHTML = `
@@ -400,19 +409,10 @@ function renderCatalog() {
       <article class="product-card" data-product-id="${p.id}">
         <div class="product-visual ${hasPhotos ? 'product-visual--photo' : ''}" data-open-product="${p.id}">
           <span class="product-badge ${p.badgeHot ? 'badge-hot' : ''}">${p.badge}</span>
-          <button type="button" class="card-lume-moon-btn ${isLumeMode ? 'active' : ''}" data-toggle-lume aria-pressed="${isLumeMode ? 'true' : 'false'}" title="Test Super-LumiNova (Giorno/Notte)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <span>Lume</span>
-          </button>
           ${
             hasPhotos
               ? `
-            <img src="${p.images[0].src}" alt="${p.title}" class="product-real-photo" loading="lazy" />
-            <div class="product-lume-overlay" aria-hidden="true">
-              ${renderWatchSVG(p, 165)}
-            </div>
+            <img src="${resolveImgSrc(p.images[0].src)}" data-raw-src="${p.images[0].src}" onerror="window.handleImgFallback(this)" alt="${p.title}" class="product-real-photo" loading="lazy" />
             <span class="product-photo-count">📷 ${p.images.length} foto</span>
           `
               : renderWatchSVG(p, 165)
@@ -511,6 +511,18 @@ function updateModalWristScale(cmValue) {
   }
 }
 
+window.fitModalMainImg = function (imgEl) {
+  if (!imgEl || !imgEl.naturalWidth || !imgEl.naturalHeight) return;
+  const isLandscape = imgEl.naturalWidth > imgEl.naturalHeight;
+  imgEl.classList.toggle('is-landscape', isLandscape);
+};
+
+function closeProductModal() {
+  const modal = document.getElementById('productModal');
+  if (modal) modal.hidden = true;
+  document.body.style.overflow = '';
+}
+
 function setModalPhotoIndex(index) {
   const product = PRODUCTS.find((p) => p.id === activeModalProductId);
   if (!product || !Array.isArray(product.images) || product.images.length === 0) return;
@@ -524,7 +536,12 @@ function setModalPhotoIndex(index) {
   const mainImg = document.getElementById('modalMainPhoto');
   const captionEl = document.getElementById('modalPhotoCaption');
   const counterEl = document.getElementById('modalPhotoCounter');
-  if (mainImg) mainImg.src = item.src;
+  if (mainImg) {
+    delete mainImg.dataset.fb;
+    mainImg.setAttribute('data-raw-src', item.src);
+    mainImg.src = resolveImgSrc(item.src);
+    if (mainImg.complete) window.fitModalMainImg(mainImg);
+  }
   if (captionEl) captionEl.textContent = item.caption || '';
   if (counterEl) counterEl.textContent = `${activeModalPhotoIndex + 1} / ${total}`;
 
@@ -555,16 +572,13 @@ function openProductModal(productId) {
             ? `
           <div class="modal-watch-preview modal-watch-preview--gallery" id="modalWatchPreviewStage">
             <button type="button" class="modal-gallery-nav prev" data-gallery-nav="-1" aria-label="Foto precedente">‹</button>
-            <img id="modalMainPhoto" src="${product.images[0].src}" alt="${product.title}" class="modal-gallery-main-img" />
+            <img id="modalMainPhoto" src="${resolveImgSrc(product.images[0].src)}" data-raw-src="${product.images[0].src}" onload="window.fitModalMainImg(this)" onerror="window.handleImgFallback(this)" alt="${product.title}" class="modal-gallery-main-img" />
             <!-- Livello Prova al Polso (Orologio fisso in primo piano + Sagoma polso in background) -->
             <div class="modal-wrist-fit-layer" aria-hidden="true">
               ${renderWristSilhouetteSVG()}
               <div class="wrist-foreground-watch">
                 ${renderWatchSVG(product, 210)}
               </div>
-            </div>
-            <div class="modal-lume-overlay" aria-hidden="true">
-              ${renderWatchSVG(product, 235)}
             </div>
             <button type="button" class="modal-gallery-nav next" data-gallery-nav="1" aria-label="Foto successiva">›</button>
             <span class="modal-photo-counter" id="modalPhotoCounter">1 / ${product.images.length}</span>
@@ -575,7 +589,7 @@ function openProductModal(productId) {
               .map(
                 (img, idx) => `
               <button type="button" class="modal-thumb-btn ${idx === 0 ? 'active' : ''}" data-gallery-index="${idx}" title="${img.caption || `Foto ${idx + 1}`}">
-                <img src="${img.src}" alt="${img.caption || `Foto ${idx + 1}`}" loading="lazy" />
+                <img src="${resolveImgSrc(img.src)}" data-raw-src="${img.src}" onerror="window.handleImgFallback(this)" alt="${img.caption || `Foto ${idx + 1}`}" loading="lazy" />
               </button>
             `
               )
@@ -617,27 +631,8 @@ function openProductModal(productId) {
             <span class="wrist-bound-label">20 cm</span>
           </div>
         </div>
-
-        <!-- Interruttore Giorno/Notte Super-LumiNova sulla pagina del prodotto -->
-        <div class="modal-lume-bar">
-          <div class="modal-lume-info">
-            <span class="modal-lume-title">Test Super-LumiNova®</span>
-            <span class="modal-lume-sub" id="modalLumeStatusText">
-              ${isLumeMode ? 'Notte • Super-LumiNova® Attivo' : 'Giorno • Clicca la luna per testare il Lume'}
-            </span>
-          </div>
-          <button type="button" class="lume-switch-pill modal-lume-switch ${isLumeMode ? 'active' : ''}" data-toggle-lume aria-pressed="${isLumeMode ? 'true' : 'false'}">
-            <span class="lume-moon-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </span>
-            <span class="lume-switch-label">Giorno / Notte</span>
-            <span class="lume-switch-track"><span class="lume-switch-thumb"></span></span>
-          </button>
-        </div>
       </div>
-      <div>
+      <div class="modal-info-col">
         <span class="product-brand">${product.brand}</span>
         <h2 id="modalTitle" style="font-family: var(--font-serif); font-size: 1.9rem; line-height: 1.18; margin: 4px 0 8px;">${product.title}</h2>
         <p style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px;">${formatPrice(product.price)}</p>
@@ -663,6 +658,33 @@ function openProductModal(productId) {
   `;
 
   modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  const dialog = modal.querySelector('.modal-dialog');
+  if (dialog) dialog.scrollTop = 0;
+
+  if (hasPhotos) {
+    const stageEl = document.getElementById('modalWatchPreviewStage');
+    if (stageEl) {
+      let touchStartX = 0;
+      stageEl.addEventListener(
+        'touchstart',
+        (ev) => {
+          touchStartX = ev.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+      stageEl.addEventListener(
+        'touchend',
+        (ev) => {
+          const dx = ev.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 42) {
+            setModalPhotoIndex(activeModalPhotoIndex + (dx < 0 ? 1 : -1));
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
 }
 
 function updateCartUI() {
@@ -785,11 +807,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('clearSearchBtn').addEventListener('click', () => {
-    activeSearchQuery = '';
-    searchInput.value = '';
-    renderCatalog();
-  });
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      activeSearchQuery = '';
+      searchInput.value = '';
+      renderCatalog();
+    });
+  }
 
   // Mobile Menu
   document.getElementById('mobileMenuBtn').addEventListener('click', () => {
@@ -813,14 +838,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', (e) => {
     const thumbBtn = e.target.closest('[data-gallery-index]');
     if (thumbBtn) {
-      if (isLumeMode) toggleLumeMode();
       setModalPhotoIndex(Number(thumbBtn.dataset.galleryIndex));
       return;
     }
 
     const navBtn = e.target.closest('[data-gallery-nav]');
     if (navBtn) {
-      if (isLumeMode) toggleLumeMode();
       setModalPhotoIndex(activeModalPhotoIndex + Number(navBtn.dataset.galleryNav));
       return;
     }
@@ -840,7 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addCartBtn = e.target.closest('[data-add-cart]');
     if (addCartBtn) {
       if (addCartBtn.dataset.closeAfter === 'true') {
-        document.getElementById('productModal').hidden = true;
+        closeProductModal();
       }
       addToCart(addCartBtn.dataset.addCart);
       return;
@@ -867,11 +890,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close Modals
-  document.getElementById('closeProductModal').addEventListener('click', () => {
-    document.getElementById('productModal').hidden = true;
-  });
+  document.getElementById('closeProductModal').addEventListener('click', closeProductModal);
+  const backBtn = document.getElementById('closeProductBackBtn');
+  if (backBtn) backBtn.addEventListener('click', closeProductModal);
   document.getElementById('productModal').addEventListener('click', (e) => {
-    if (e.target.id === 'productModal') e.target.hidden = true;
+    if (e.target.id === 'productModal') closeProductModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProductModal();
+      document.getElementById('policyModal').hidden = true;
+    }
   });
 
   document.getElementById('closePolicyModal').addEventListener('click', () => {
