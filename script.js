@@ -188,7 +188,9 @@ const PRODUCTS = [
       'Ricercatissima referenza Seiko Prospex Alpinist SPB209J1 con quadrante marrone Sunburst, indici e sfere Cattedrale dorate rivestite in LumiBrite, ghiera bussola interna girevole tramite la corona a ore 4, vetro zaffiro con lente Cyclope sul datario e movimento automatico di manifattura Calibro 6R35 con 70 ore di riserva di carica. Venduto come solo orologio (senza scatola e senza garanzia), autentico al 100% e accuratamente verificato.',
     images: [
       { src: 'images/seiko-alpinist-spb209/spb209-1.jpg', caption: 'Vista frontale – Seiko Prospex Alpinist SPB209J1 quadrante marrone Sunburst e cinturino in pelle nera' },
-      { src: 'images/seiko-alpinist-spb209/spb209-2.jpg', caption: 'Macro quadrante – Dettaglio finitura marrone soleggiata, sfere Cattedrale dorate, ghiera bussola e lente Cyclope' }
+      { src: 'images/seiko-alpinist-spb209/spb209-2.jpg', caption: 'Macro quadrante – Dettaglio finitura marrone soleggiata, sfere Cattedrale dorate, ghiera bussola e lente Cyclope' },
+      { src: 'images/seiko-alpinist-spb209/spb209-3.jpg', caption: 'Dettaglio ravvicinato – Logo Prospex Automatic 20 BAR, indice applicato a ore 6 e sfere Cattedrale con LumiBrite' },
+      { src: 'images/seiko-alpinist-spb209/spb209-4.jpg', caption: 'Dettaglio lente Cyclope sul datario a ore 3, ghiera bussola interna e doppia corona' }
     ],
     theme: {
       caseColor: '#d4d8df',
