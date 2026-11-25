@@ -172,6 +172,36 @@ const PRODUCTS = [
     }
   },
   {
+    id: 'seiko-alpinist-spb209',
+    brand: 'Seiko',
+    title: 'Seiko Prospex Alpinist Automatic – Quadrante Marrone Sunburst',
+    ref: 'SPB209J1 • Calibro 6R35 (70h)',
+    price: 749,
+    badge: 'FOTO REALI • SOLO OROLOGIO',
+    badgeHot: true,
+    condition: 'Solo Orologio (No Scatola • No Garanzia)',
+    movement: 'Automatico 6R35 (70 ore riserva)',
+    diameter: '39.5 mm',
+    caseMaterial: 'Acciaio Inox • Vetro Zaffiro con Lente Cyclope',
+    strap: 'Cinturino in Pelle Nera con Cuciture Vintage',
+    description:
+      'Ricercatissima referenza Seiko Prospex Alpinist SPB209J1 con quadrante marrone Sunburst, indici e sfere Cattedrale dorate rivestite in LumiBrite, ghiera bussola interna girevole tramite la corona a ore 4, vetro zaffiro con lente Cyclope sul datario e movimento automatico di manifattura Calibro 6R35 con 70 ore di riserva di carica. Venduto come solo orologio (senza scatola e senza garanzia), autentico al 100% e accuratamente verificato.',
+    images: [
+      { src: 'images/seiko-alpinist-spb209/spb209-1.jpg', caption: 'Vista frontale – Seiko Prospex Alpinist SPB209J1 quadrante marrone Sunburst e cinturino in pelle nera' },
+      { src: 'images/seiko-alpinist-spb209/spb209-2.jpg', caption: 'Macro quadrante – Dettaglio finitura marrone soleggiata, sfere Cattedrale dorate, ghiera bussola e lente Cyclope' }
+    ],
+    theme: {
+      caseColor: '#d4d8df',
+      bezelColor: '#c3c8d1',
+      dialColor: '#4a3b28',
+      subdialColor: '#362a1c',
+      textColor: '#e5c168',
+      strapColor: '#1a1c20',
+      accentColor: '#d4af37',
+      moonphase: false
+    }
+  },
+  {
     id: 'tissot-prx-powermatic',
     brand: 'Tissot',
     title: 'Tissot PRX Powermatic 80 – Quadrante Nero Waffle',
