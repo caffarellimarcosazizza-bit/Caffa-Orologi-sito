@@ -20,7 +20,9 @@ const PRODUCTS = [
       { src: 'images/omega-speedmaster-38-2.jpg', caption: 'Macro quadrante – Dettaglio contatori ovali orizzontali, datario a ore 6 e scala tachimetrica' },
       { src: 'images/omega-speedmaster-38-3.jpg', caption: 'Dettaglio ravvicinato – Finitura concentrica dei subdial, indici applicati rodiati e vetro zaffiro' },
       { src: 'images/omega-speedmaster-38-4.jpg', caption: 'Profilo laterale cassa – Corona con logo Ω in rilievo e pulsanti cronografici a pompa' },
-      { src: 'images/omega-speedmaster-38-5.jpg', caption: 'Bracciale in acciaio, chiusura e fondello con medaglione Ippocampo Speedmaster, maglie aggiuntive e card' }
+      { src: 'images/omega-speedmaster-38-5.jpg', caption: 'Bracciale in acciaio, chiusura e fondello con medaglione Ippocampo Speedmaster, maglie aggiuntive e card' },
+      { src: 'images/omega-speedmaster-38-7.jpg', caption: 'Movimento automatico di manifattura Calibro Omega 3330 Co-Axial Chronometer (COSC) con ruota a colonne' },
+      { src: 'images/omega-speedmaster-38-6.jpg', caption: 'Corredo originale Omega – Cofanetto in legno e custodia da viaggio rossa firmata Ω OMEGA' }
     ],
     theme: {
       caseColor: '#d8dce3',
