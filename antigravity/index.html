@@ -30,7 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="antigravity/caffa_orologi_instagram_profile.jpg" />
   <link rel="apple-touch-icon" href="antigravity/caffa_orologi_instagram_profile.jpg" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 
   <!-- Schema.org JSON-LD Structured Data (Store + Product Catalog + FAQPage) -->
   <script type="application/ld+json">
@@ -70,6 +70,26 @@
           {
             "@type": "ListItem",
             "position": 1,
+            "item": {
+              "@type": "Product",
+              "name": "Omega Speedmaster 38 Co-Axial Chronometer Chronograph",
+              "sku": "324.30.38.50.01.001",
+              "brand": { "@type": "Brand", "name": "Omega" },
+              "image": "https://www.caffaorologi.com/omega-speedmaster-38-hero.jpg",
+              "description": "Omega Speedmaster 38 Co-Axial Chronometer Chronograph (Ref. 324.30.38.50.01.001) Full Set completo con scatola e card ufficiali Omega.",
+              "offers": {
+                "@type": "Offer",
+                "url": "https://www.caffaorologi.com/#catalogo",
+                "priceCurrency": "EUR",
+                "price": "3500.00",
+                "availability": "https://schema.org/InStock",
+                "itemCondition": "https://schema.org/UsedCondition"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
             "item": {
               "@type": "Product",
               "name": "Omega x Swatch Bioceramic MoonSwatch – Mission to the Moonphase Snoopy White",
@@ -369,7 +389,7 @@
             </div>
 
             <!-- Visual Orologio Reale Svelato (Zero Blur, Zero Clessidra) -->
-            <div class="mystery-watch-visual-wrap" aria-label="Omega Speedmaster 38 Co-Axial Chronograph Full Set">
+            <div class="mystery-watch-visual-wrap" data-open-product="omega-speedmaster-38-coaxial" style="cursor: pointer;" aria-label="Omega Speedmaster 38 Co-Axial Chronograph Full Set">
               <img
                 src="omega-speedmaster-38-hero.jpg"
                 onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='images/omega-speedmaster-38-hero.jpg';}else if(this.dataset.fb==1){this.dataset.fb=2;this.src='antigravity/images/omega-speedmaster-38-hero.jpg';}else if(this.dataset.fb==2){this.dataset.fb=3;this.src='antigravity/omega-speedmaster-38-hero.jpg';}"
@@ -378,7 +398,7 @@
               />
             </div>
 
-            <div class="hero-offer-watch-meta">
+            <div class="hero-offer-watch-meta" data-open-product="omega-speedmaster-38-coaxial" style="cursor: pointer;">
               <span class="hero-offer-brand">OMEGA • CO-AXIAL CHRONOMETER</span>
               <h3 class="hero-offer-title">Speedmaster 38 Chronograph</h3>
               <span class="hero-offer-ref">Ref. 324.30.38.50.01.001 • Full Set Scatola &amp; Card Ufficiali</span>
@@ -418,6 +438,7 @@
     <div class="container brand-strip-inner">
       <span class="brand-strip-label">MARCHI IN EVIDENZA</span>
       <div class="brand-logos">
+        <button class="brand-pill" data-brand="Omega">OMEGA</button>
         <button class="brand-pill" data-brand="Omega x Swatch">OMEGA × SWATCH</button>
         <button class="brand-pill" data-brand="Seiko">SEIKO</button>
         <button class="brand-pill" data-brand="Tissot">TISSOT</button>
@@ -438,6 +459,16 @@
       </div>
 
       <div class="collections-grid">
+        <article class="collection-card collection-featured" data-collection-filter="Omega">
+          <div class="collection-badge">OFFERTA FULL SET</div>
+          <div class="collection-content">
+            <span class="collection-tag">ALTA OROLOGERIA SVIZZERA</span>
+            <h3>Omega</h3>
+            <p>Incluso l'iconico <em>Omega Speedmaster 38 Co-Axial Chronometer Chronograph</em> Full Set con scatola e card ufficiali.</p>
+            <span class="collection-cta">Vedi Omega →</span>
+          </div>
+        </article>
+
         <article class="collection-card collection-featured" data-collection-filter="Omega x Swatch">
           <div class="collection-badge">PIÙ RICHIESTI</div>
           <div class="collection-content">
@@ -480,6 +511,7 @@
         <div class="catalog-controls">
           <div class="filter-tabs" role="tablist" aria-label="Filtra per marchio">
             <button class="filter-tab active" data-filter="all">Tutti</button>
+            <button class="filter-tab" data-filter="Omega">Omega</button>
             <button class="filter-tab" data-filter="Omega x Swatch">Omega × Swatch</button>
             <button class="filter-tab" data-filter="Seiko">Seiko</button>
             <button class="filter-tab" data-filter="Tissot">Tissot</button>
@@ -814,6 +846,7 @@
       <div class="footer-col">
         <h4>Collezioni</h4>
         <ul>
+          <li><a href="#catalogo" data-filter-trigger="Omega">Omega</a></li>
           <li><a href="#catalogo" data-filter-trigger="Omega x Swatch">Omega × Swatch MoonSwatch</a></li>
           <li><a href="#catalogo" data-filter-trigger="Seiko">Seiko</a></li>
           <li><a href="#catalogo" data-filter-trigger="Tissot">Tissot</a></li>
@@ -897,6 +930,6 @@
     </div>
   </aside>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

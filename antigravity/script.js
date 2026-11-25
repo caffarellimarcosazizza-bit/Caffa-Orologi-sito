@@ -1,6 +1,35 @@
 // Catalogo prodotti Caffa Orologi (www.caffaorologi.com)
 const PRODUCTS = [
   {
+    id: 'omega-speedmaster-38-coaxial',
+    brand: 'Omega',
+    title: 'Omega Speedmaster 38 Co-Axial Chronometer Chronograph',
+    ref: '324.30.38.50.01.001 • Listino 5.600 €',
+    price: 3500,
+    badge: 'OFFERTA DA NON PERDERE • FULL SET',
+    badgeHot: true,
+    condition: 'Full Set • Scatola & Card Ufficiali Omega',
+    movement: 'Automatico Co-Axial Calibro 3330 (COSC)',
+    diameter: '38 mm',
+    caseMaterial: 'Acciaio Inox • Vetro Zaffiro Antiriflesso',
+    strap: 'Bracciale Originale Omega in Acciaio Inox',
+    description:
+      'Autentico Omega Speedmaster 38 Co-Axial Chronometer Chronograph (Ref. 324.30.38.50.01.001): cassa e bracciale in acciaio da 38 mm, lunetta con scala tachimetrica su anello in alluminio nero, contatori orizzontali ovali con datario a ore 6 e movimento automatico cronografo certificato COSC Calibro Omega 3330 con scappamento Co-Axial e spirale in silicio Si14. Corredo completo Full Set con cofanetto originale Omega e card ufficiali (prezzo di listino 5.600 €, nostra offerta 3.500 €).',
+    images: [
+      { src: 'images/omega-speedmaster-38-hero.jpg', caption: 'Vista frontale – Omega Speedmaster 38 Co-Axial Full Set con scatola e card ufficiali Omega' }
+    ],
+    theme: {
+      caseColor: '#d8dce3',
+      bezelColor: '#16181f',
+      dialColor: '#12141a',
+      subdialColor: '#1c2029',
+      textColor: '#f5f6fa',
+      strapColor: '#cfd4dc',
+      accentColor: '#d4af37',
+      moonphase: false
+    }
+  },
+  {
     id: 'moonswatch-snoopy-white',
     brand: 'Omega x Swatch',
     title: 'Bioceramic MoonSwatch – Mission to the Moonphase "Snoopy White"',
@@ -291,7 +320,7 @@ function toggleLumeMode() {
 // Generate tailored SVG watch illustration for each product card
 function renderWatchSVG(product, size = 180) {
   const t = product.theme;
-  const isChrono = product.brand === 'Omega x Swatch';
+  const isChrono = product.brand === 'Omega x Swatch' || product.brand === 'Omega';
   return `
     <svg viewBox="0 0 220 260" width="${size}" height="${Math.round(size * 1.18)}" class="watch-svg-interactive" aria-hidden="true">
       <!-- Top & Bottom Straps -->
