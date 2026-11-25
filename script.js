@@ -16,7 +16,9 @@ const PRODUCTS = [
     description:
       'Autentico Omega Speedmaster 38 Co-Axial Chronometer Chronograph (Ref. 324.30.38.50.01.001): cassa e bracciale in acciaio da 38 mm, lunetta con scala tachimetrica su anello in alluminio nero, contatori orizzontali ovali con datario a ore 6 e movimento automatico cronografo certificato COSC Calibro Omega 3330 con scappamento Co-Axial e spirale in silicio Si14. Corredo completo Full Set con cofanetto originale Omega e card ufficiali (prezzo di listino 5.600 €, nostra offerta 3.500 €).',
     images: [
-      { src: 'images/omega-speedmaster-38-hero.jpg', caption: 'Vista frontale – Omega Speedmaster 38 Co-Axial Full Set con scatola e card ufficiali Omega' }
+      { src: 'images/omega-speedmaster-38-hero.jpg', caption: 'Vista frontale – Omega Speedmaster 38 Co-Axial Full Set con scatola e card ufficiali Omega' },
+      { src: 'images/omega-speedmaster-38-2.jpg', caption: 'Macro quadrante – Dettaglio contatori ovali orizzontali, datario a ore 6 e scala tachimetrica' },
+      { src: 'images/omega-speedmaster-38-3.jpg', caption: 'Dettaglio ravvicinato – Finitura concentrica dei subdial, indici applicati rodiati e vetro zaffiro' }
     ],
     theme: {
       caseColor: '#d8dce3',
