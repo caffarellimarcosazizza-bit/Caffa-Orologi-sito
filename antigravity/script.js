@@ -183,7 +183,7 @@ const PRODUCTS = [
     movement: 'Automatico 6R35 (70 ore riserva)',
     diameter: '39.5 mm',
     caseMaterial: 'Acciaio Inox • Vetro Zaffiro con Lente Cyclope',
-    strap: 'Cinturino in Pelle Nera con Cuciture Vintage',
+    strap: 'Cinturino Originale Seiko in Pelle Nera con Deployante',
     description:
       'Ricercatissima referenza Seiko Prospex Alpinist SPB209J1 con quadrante marrone Sunburst, indici e sfere Cattedrale dorate rivestite in LumiBrite, ghiera bussola interna girevole tramite la corona a ore 4, vetro zaffiro con lente Cyclope sul datario e movimento automatico di manifattura Calibro 6R35 con 70 ore di riserva di carica. Venduto come solo orologio (senza scatola e senza garanzia), autentico al 100% e accuratamente verificato.',
     images: [
@@ -192,7 +192,9 @@ const PRODUCTS = [
       { src: 'images/seiko-alpinist-spb209/spb209-3.jpg', caption: 'Dettaglio ravvicinato – Logo Prospex Automatic 20 BAR, indice applicato a ore 6 e sfere Cattedrale con LumiBrite' },
       { src: 'images/seiko-alpinist-spb209/spb209-4.jpg', caption: 'Dettaglio lente Cyclope sul datario a ore 3, ghiera bussola interna e doppia corona' },
       { src: 'images/seiko-alpinist-spb209/spb209-5.jpg', caption: 'Profilo laterale cassa – Doppia corona zigrinata (ore 3 a vite e ore 4 per ghiera bussola interna)' },
-      { src: 'images/seiko-alpinist-spb209/spb209-6.jpg', caption: 'Fondello a vista Made in Japan (6R35-00E0) – Movimento automatico Seiko Calibro 6R35A (24 Jewels)' }
+      { src: 'images/seiko-alpinist-spb209/spb209-6.jpg', caption: 'Fondello a vista Made in Japan (6R35-00E0) – Movimento automatico Seiko Calibro 6R35A (24 Jewels)' },
+      { src: 'images/seiko-alpinist-spb209/spb209-7.jpg', caption: 'Dettaglio ravvicinato fondello in vetro zaffiro e rotore scheletrato Seiko Prospex' },
+      { src: 'images/seiko-alpinist-spb209/spb209-8.jpg', caption: 'Chiusura deployante originale in acciaio satinato con incisione SEIKO e cinturino in pelle nera' }
     ],
     theme: {
       caseColor: '#d4d8df',
