@@ -18,7 +18,9 @@ const PRODUCTS = [
     images: [
       { src: 'images/omega-speedmaster-38-hero.jpg', caption: 'Vista frontale – Omega Speedmaster 38 Co-Axial Full Set con scatola e card ufficiali Omega' },
       { src: 'images/omega-speedmaster-38-2.jpg', caption: 'Macro quadrante – Dettaglio contatori ovali orizzontali, datario a ore 6 e scala tachimetrica' },
-      { src: 'images/omega-speedmaster-38-3.jpg', caption: 'Dettaglio ravvicinato – Finitura concentrica dei subdial, indici applicati rodiati e vetro zaffiro' }
+      { src: 'images/omega-speedmaster-38-3.jpg', caption: 'Dettaglio ravvicinato – Finitura concentrica dei subdial, indici applicati rodiati e vetro zaffiro' },
+      { src: 'images/omega-speedmaster-38-4.jpg', caption: 'Profilo laterale cassa – Corona con logo Ω in rilievo e pulsanti cronografici a pompa' },
+      { src: 'images/omega-speedmaster-38-5.jpg', caption: 'Bracciale in acciaio, chiusura e fondello con medaglione Ippocampo Speedmaster, maglie aggiuntive e card' }
     ],
     theme: {
       caseColor: '#d8dce3',
