@@ -190,7 +190,9 @@ const PRODUCTS = [
       { src: 'images/seiko-alpinist-spb209/spb209-1.jpg', caption: 'Vista frontale – Seiko Prospex Alpinist SPB209J1 quadrante marrone Sunburst e cinturino in pelle nera' },
       { src: 'images/seiko-alpinist-spb209/spb209-2.jpg', caption: 'Macro quadrante – Dettaglio finitura marrone soleggiata, sfere Cattedrale dorate, ghiera bussola e lente Cyclope' },
       { src: 'images/seiko-alpinist-spb209/spb209-3.jpg', caption: 'Dettaglio ravvicinato – Logo Prospex Automatic 20 BAR, indice applicato a ore 6 e sfere Cattedrale con LumiBrite' },
-      { src: 'images/seiko-alpinist-spb209/spb209-4.jpg', caption: 'Dettaglio lente Cyclope sul datario a ore 3, ghiera bussola interna e doppia corona' }
+      { src: 'images/seiko-alpinist-spb209/spb209-4.jpg', caption: 'Dettaglio lente Cyclope sul datario a ore 3, ghiera bussola interna e doppia corona' },
+      { src: 'images/seiko-alpinist-spb209/spb209-5.jpg', caption: 'Profilo laterale cassa – Doppia corona zigrinata (ore 3 a vite e ore 4 per ghiera bussola interna)' },
+      { src: 'images/seiko-alpinist-spb209/spb209-6.jpg', caption: 'Fondello a vista Made in Japan (6R35-00E0) – Movimento automatico Seiko Calibro 6R35A (24 Jewels)' }
     ],
     theme: {
       caseColor: '#d4d8df',
