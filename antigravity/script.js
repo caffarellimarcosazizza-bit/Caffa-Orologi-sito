@@ -106,7 +106,7 @@ const PRODUCTS = [
     brand: 'Omega x Swatch',
     title: 'Bioceramic MoonSwatch – Mission to the Moon',
     ref: 'SO33M100 • Speedmaster Homage',
-    price: 190,
+    price: 200,
     badge: 'FOTO REALI • FULL SET',
     badgeHot: true,
     condition: 'Full Set • Scatola & Garanzia Ufficiale',
